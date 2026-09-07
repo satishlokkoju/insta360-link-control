@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.flatpak-builder/
+repo/
+*.flatpak
+*.snap
+parts/
+prime/
+stage/

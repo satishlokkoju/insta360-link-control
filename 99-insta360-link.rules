@@ -1,0 +1,8 @@
+# Insta360 Link / Link 2 — grant the local desktop user control of the webcam.
+#
+# On a normal desktop session systemd-logind already grants an ACL on /dev/video*,
+# so this file is only needed for headless machines, remote sessions, or service
+# accounts. Install with:
+#   sudo cp 99-insta360-link.rules /etc/udev/rules.d/
+#   sudo udevadm control --reload-rules && sudo udevadm trigger
+SUBSYSTEM=="video4linux", ATTRS{idVendor}=="2e1a", MODE="0660", GROUP="video", TAG+="uaccess"

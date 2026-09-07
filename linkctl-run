@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+import os, sys
+# realpath, not abspath: this file is normally invoked through a symlink on PATH.
+sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)))
+from linkctl.cli import main
+sys.exit(main())
