@@ -1,0 +1,80 @@
+id: io.github.satishlokkoju.insta360_link_control
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+command: link-control-gui
+
+finish-args:
+  # The camera is controlled through ioctls on /dev/video*, including the UVC
+  # extension-unit requests that drive the gimbal and the AI framing modes.
+  # Flatpak has no narrower permission for video devices than --device=all.
+  - --device=all
+  # The interface is Tk, which has no Wayland backend.
+  - --socket=x11
+  - --share=ipc
+
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /man
+  - /share/man
+  - '*.a'
+  - '*.la'
+
+modules:
+  # The freedesktop runtime's Python has no _tkinter, so Tcl, Tk and the
+  # extension module are built here. Same approach as org.thonny.Thonny.
+  - name: tkinter
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-build-isolation --prefix=${FLATPAK_DEST} .
+    sources:
+      - type: git
+        url: https://github.com/iwalton3/tkinter-standalone
+        commit: 4f5cfe3cdd1f58cd4e136fd66d4e5e27d21d820b
+    modules:
+      - name: tcl
+        buildsystem: autotools
+        subdir: unix
+        post-install:
+          - chmod +w ${FLATPAK_DEST}/lib/libtcl*.so
+        build-options: &tcl-build-options
+          cflags: -DTCL_UTF_MAX=4
+        cleanup:
+          - /bin
+          - /lib/pkgconfig
+          - /man
+        sources:
+          - type: archive
+            url: https://prdownloads.sourceforge.net/tcl/tcl8.6.15-src.tar.gz
+            sha256: 861e159753f2e2fbd6ec1484103715b0be56be3357522b858d3cbb5f893ffef1
+      - name: tk
+        buildsystem: autotools
+        subdir: unix
+        post-install:
+          - chmod +w ${FLATPAK_DEST}/lib/libtk*.so
+        build-options: *tcl-build-options
+        cleanup:
+          - /bin
+          - /lib/pkgconfig
+          - /man
+        sources:
+          - type: archive
+            url: https://prdownloads.sourceforge.net/tcl/tk8.6.15-src.tar.gz
+            sha256: 550969f35379f952b3020f3ab7b9dd5bfd11c1ef7c9b7c6a75f5c49aca793fec
+
+  - name: insta360-link-control
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-deps --no-build-isolation --prefix=${FLATPAK_DEST} .
+      - install -Dm644 packaging/io.github.satishlokkoju.insta360_link_control.metainfo.xml
+        ${FLATPAK_DEST}/share/metainfo/io.github.satishlokkoju.insta360_link_control.metainfo.xml
+      - install -Dm644 packaging/io.github.satishlokkoju.insta360_link_control.desktop
+        ${FLATPAK_DEST}/share/applications/io.github.satishlokkoju.insta360_link_control.desktop
+      - install -Dm644 packaging/io.github.satishlokkoju.insta360_link_control.svg
+        ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/io.github.satishlokkoju.insta360_link_control.svg
+    sources:
+      - type: git
+        url: https://github.com/satishlokkoju/insta360_link_control.git
+        tag: v0.1.0
+        commit: 22799d3323e78cd8f96f1248c53bb5978bb8db15

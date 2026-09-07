@@ -23,8 +23,8 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/satishlokkoju/insta360-link-control"
-Issues = "https://github.com/satishlokkoju/insta360-link-control/issues"
+Homepage = "https://github.com/satishlokkoju/insta360_link_control"
+Issues = "https://github.com/satishlokkoju/insta360_link_control/issues"
 
 [project.scripts]
 linkctl = "linkctl.cli:main"

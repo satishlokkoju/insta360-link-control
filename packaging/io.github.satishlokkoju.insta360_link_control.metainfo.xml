@@ -45,21 +45,21 @@
   <screenshots>
     <screenshot type="default">
       <caption>Gimbal control and framing modes, with a live preview</caption>
-      <image>https://raw.githubusercontent.com/satishlokkoju/insta360-link-control/main/packaging/screenshots/01-framing.png</image>
+      <image>https://raw.githubusercontent.com/satishlokkoju/insta360_link_control/main/packaging/screenshots/01-framing.png</image>
     </screenshot>
     <screenshot>
       <caption>Image settings, dimmed when the camera's automatic modes own them</caption>
-      <image>https://raw.githubusercontent.com/satishlokkoju/insta360-link-control/main/packaging/screenshots/02-image.png</image>
+      <image>https://raw.githubusercontent.com/satishlokkoju/insta360_link_control/main/packaging/screenshots/02-image.png</image>
     </screenshot>
     <screenshot>
       <caption>Saved pan, tilt and zoom presets</caption>
-      <image>https://raw.githubusercontent.com/satishlokkoju/insta360-link-control/main/packaging/screenshots/03-presets.png</image>
+      <image>https://raw.githubusercontent.com/satishlokkoju/insta360_link_control/main/packaging/screenshots/03-presets.png</image>
     </screenshot>
   </screenshots>
 
-  <url type="homepage">https://github.com/satishlokkoju/insta360-link-control</url>
-  <url type="bugtracker">https://github.com/satishlokkoju/insta360-link-control/issues</url>
-  <url type="vcs-browser">https://github.com/satishlokkoju/insta360-link-control</url>
+  <url type="homepage">https://github.com/satishlokkoju/insta360_link_control</url>
+  <url type="bugtracker">https://github.com/satishlokkoju/insta360_link_control/issues</url>
+  <url type="vcs-browser">https://github.com/satishlokkoju/insta360_link_control</url>
 
   <categories>
     <category>AudioVideo</category>
