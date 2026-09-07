@@ -653,6 +653,36 @@ class ControlPanel(ttk.Frame):
             self.preview.stop()
 
 
+def main(argv=None):
+    """Desktop entry point: report a missing camera in a dialog, not a traceback."""
+    from .camera import CameraNotFound
+
+    try:
+        camera = LinkCamera()
+    except (CameraNotFound, PermissionError, OSError) as exc:
+        root = tk.Tk()
+        root.withdraw()
+        from tkinter import messagebox
+
+        if isinstance(exc, PermissionError):
+            detail = (
+                "Permission denied opening the camera.\n\n"
+                "Add your user to the 'video' group, or install the udev rule "
+                "shipped with this project, then reconnect the camera."
+            )
+        else:
+            detail = (
+                "No Insta360 Link camera was found.\n\n"
+                "Connect the camera and try again. If it is already connected, "
+                "check that it appears in the output of: lsusb | grep 2e1a"
+            )
+        messagebox.showerror(APP_NAME, detail)
+        root.destroy()
+        return 1
+    run(camera)
+    return 0
+
+
 def run(camera=None):
     owns_camera = camera is None
     if camera is None:

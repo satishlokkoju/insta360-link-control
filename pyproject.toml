@@ -28,6 +28,7 @@ Issues = "https://github.com/satishlokkoju/insta360-link-control/issues"
 
 [project.scripts]
 linkctl = "linkctl.cli:main"
+link-control-gui = "linkctl.gui:main"
 
 [tool.setuptools]
 packages = ["linkctl"]
