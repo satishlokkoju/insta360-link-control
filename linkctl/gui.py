@@ -15,6 +15,8 @@ from tkinter import ttk
 from . import ioctls as io
 from .camera import FEATURES, MODES, TRACK_FRAMES, LinkCamera
 
+APP_NAME = "Link Control"
+
 PREVIEW_WIDTH, PREVIEW_HEIGHT = 480, 270
 
 MODE_LABELS = [
@@ -656,7 +658,7 @@ def run(camera=None):
     if camera is None:
         camera = LinkCamera()
     root = tk.Tk()
-    root.title(f"{camera.info.get('model', 'Insta360 Link')} — Control")
+    root.title(APP_NAME)
     root.minsize(880, 560)
     try:
         style = ttk.Style()

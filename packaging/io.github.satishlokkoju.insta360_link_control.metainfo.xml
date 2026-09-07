@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.satishlokkoju.insta360_link_control</id>
+
+  <name>Link Control</name>
+  <summary>Control pan, tilt, zoom and AI framing on Insta360 Link webcams</summary>
+
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+
+  <developer id="io.github.satishlokkoju">
+    <name>Satish Lokkoju</name>
+  </developer>
+
+  <description>
+    <p>
+      Link Control drives Insta360 Link and Link 2 webcams on Linux, where the
+      manufacturer ships no software of its own. It moves the motorised gimbal,
+      sets zoom and focus, adjusts the image, and switches the camera's built-in
+      framing modes.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Pan, tilt and zoom the gimbal, with presets you can save and recall</li>
+      <li>AI subject tracking, and how tightly it frames you</li>
+      <li>Whiteboard, Overhead and DeskView framing modes</li>
+      <li>Brightness, contrast, saturation, sharpness, white balance and focus</li>
+      <li>Hand gesture control and microphone noise cancellation</li>
+      <li>An optional live preview, and a full command line interface</li>
+    </ul>
+    <p>
+      Standard controls use V4L2, and the camera's proprietary features use its
+      UVC extension units. Access to the camera device is required for both.
+    </p>
+    <p>
+      This is unofficial software, developed independently. It is not affiliated
+      with, authorised by, or endorsed by Arashi Vision Inc. Insta360 and
+      Insta360 Link are trademarks of their respective owner and are used here
+      only to describe compatible hardware.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">io.github.satishlokkoju.insta360_link_control.desktop</launchable>
+
+  <screenshots>
+    <screenshot type="default">
+      <caption>Gimbal control and framing modes, with a live preview</caption>
+      <image>https://raw.githubusercontent.com/satishlokkoju/insta360-link-control/main/packaging/screenshots/01-framing.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Image settings, dimmed when the camera's automatic modes own them</caption>
+      <image>https://raw.githubusercontent.com/satishlokkoju/insta360-link-control/main/packaging/screenshots/02-image.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Saved pan, tilt and zoom presets</caption>
+      <image>https://raw.githubusercontent.com/satishlokkoju/insta360-link-control/main/packaging/screenshots/03-presets.png</image>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">https://github.com/satishlokkoju/insta360-link-control</url>
+  <url type="bugtracker">https://github.com/satishlokkoju/insta360-link-control/issues</url>
+  <url type="vcs-browser">https://github.com/satishlokkoju/insta360-link-control</url>
+
+  <categories>
+    <category>AudioVideo</category>
+    <category>Video</category>
+  </categories>
+
+  <keywords>
+    <keyword>webcam</keyword>
+    <keyword>camera</keyword>
+    <keyword>gimbal</keyword>
+    <keyword>pan</keyword>
+    <keyword>tilt</keyword>
+    <keyword>zoom</keyword>
+    <keyword>PTZ</keyword>
+    <keyword>UVC</keyword>
+    <keyword>V4L2</keyword>
+  </keywords>
+
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+  </supports>
+
+  <requires>
+    <display_length compare="ge">768</display_length>
+  </requires>
+
+  <branding>
+    <color type="primary" scheme_preference="light">#b8c4d4</color>
+    <color type="primary" scheme_preference="dark">#232b38</color>
+  </branding>
+
+  <content_rating type="oars-1.1"/>
+
+  <releases>
+    <release version="0.1.0" date="2026-09-06">
+      <description>
+        <p>First release.</p>
+        <ul>
+          <li>Gimbal, zoom, focus and image controls over V4L2</li>
+          <li>Framing modes, tracking, gestures and noise cancellation over UVC extension units</li>
+          <li>Tk control panel with optional live preview, plus the linkctl command line tool</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+</component>

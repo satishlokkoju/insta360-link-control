@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Link Control
+GenericName=Webcam Control
+Comment=Control Insta360 Link webcams: pan, tilt, zoom and AI framing
+Exec=linkctl gui
+Icon=io.github.satishlokkoju.insta360_link_control
+Terminal=false
+Categories=AudioVideo;Video;
+Keywords=webcam;camera;ptz;gimbal;pan;tilt;zoom;uvc;v4l2;insta360;link;
+StartupNotify=true
