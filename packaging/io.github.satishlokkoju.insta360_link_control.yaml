@@ -1,5 +1,9 @@
 id: io.github.satishlokkoju.insta360_link_control
 runtime: org.freedesktop.Platform
+# Pinned to 24.08 deliberately. The tkinter-standalone module below vendors a
+# copy of _tkinter.c that calls Py_GetProgramName, which was removed in Python
+# 3.14; building against the 26.08 runtime therefore fails to compile. 24.08
+# ships Python 3.12, which is also what org.thonny.Thonny targets.
 runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 command: link-control-gui
@@ -31,7 +35,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/iwalton3/tkinter-standalone
-        commit: 1e60114237fa6be2614cfd0b989a61fa0566df44
+        commit: 4f5cfe3cdd1f58cd4e136fd66d4e5e27d21d820b
     modules:
       - name: tcl
         buildsystem: autotools

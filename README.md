@@ -35,18 +35,52 @@ proprietary AI/framing modes that `v4l2-ctl` cannot reach.
 
 ## Install
 
-Nothing is required to run it from this directory. To get `linkctl` on your PATH:
+### From Flathub
+
+Once the app is published (submission in progress):
 
 ```bash
+flatpak install flathub io.github.satishlokkoju.insta360_link_control
+```
+
+It then appears in your application menu as **Link Control**.
+
+### From this repository
+
+Nothing needs building. To get `linkctl` on your PATH:
+
+```bash
+git clone https://github.com/satishlokkoju/insta360_link_control.git
+cd insta360_link_control
 ./install.sh          # symlinks ~/.local/bin/linkctl
 ```
+
+Or install it as a Python package, which also provides the `link-control-gui`
+desktop command:
+
+```bash
+pip install --user .
+```
+
+### Building the Flatpak yourself
+
+```bash
+flatpak install --user flathub org.flatpak.Builder
+flatpak run --env=FLATPAK_USER_DIR=$HOME/.local/share/flatpak \
+  --command=flatpak-builder org.flatpak.Builder \
+  --force-clean --user --install --install-deps-from=flathub --repo=repo \
+  build-dir packaging/io.github.satishlokkoju.insta360_link_control.yaml
+```
+
+The `FLATPAK_USER_DIR` override is needed because `org.flatpak.Builder` otherwise
+resolves runtimes against the system installation, which may not have them.
+
+### Permissions
 
 Desktop sessions already grant your user an ACL on `/dev/video*`. On a headless box or
 over SSH, install the bundled udev rule (see the top of `99-insta360-link.rules`).
 
-The live preview in the GUI is the only part that needs an external program: `ffmpeg`.
-
----
+The live preview in the GUI needs `ffmpeg`; the Flatpak already includes it.
 
 ## Command line
 
